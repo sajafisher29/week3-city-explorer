@@ -1,6 +1,5 @@
-# week3-city-explorer
 # City-Explorer-Back-End
-Coding from scratch
+Week 3 building on original coding from scratch
 
 ## Motivation
 In labs 6 through 9, you will be building a stand-alone back end which will interact with a static front end. Working with a new partner each day, you will request data from a total of six third-party APIs, modify the data as needed, and send the data to the client to be displayed in the browser. In labs 8 and 9, you will be persisting data in a SQL database.
