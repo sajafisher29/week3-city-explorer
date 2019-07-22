@@ -113,7 +113,7 @@ function Weather(day) {
 
 Weather.tableName = 'weathers';
 Weather.lookup = lookup;
-Weather.deleteByLocationId = deleteByLocationId;
+Weather.deleteLocationsDataById = deleteLocationsDataById;
 
 Weather.prototype = {
   save: function (location_id) {
@@ -137,7 +137,7 @@ function Yelp(business) {
 
 Yelp.tableName = 'yelps';
 Yelp.lookup = lookup;
-Yelp.deleteByLocationId = deleteByLocationId;
+Yelp.deleteLocationsDataById = deleteLocationsDataById;
 
 Yelp.prototype = {
   save: function (location_id) {
@@ -163,7 +163,7 @@ function Movie(movie) {
 
 Movie.tableName = 'movies';
 Movie.lookup = lookup;
-Movie.deleteByLocationId = deleteByLocationId;
+Movie.deleteLocationsDataById = deleteLocationsDataById;
 
 Movie.prototype = {
   save: function (location_id) {
@@ -193,7 +193,7 @@ function Event(event) {
 
 Event.tableName = 'events';
 Event.lookup = lookup;
-Event.deleteByLocationId = deleteByLocationId;
+Event.deleteLocationsDataById = deleteLocationsDataById;
 
 Event.prototype = {
   save: function (location_id) {
@@ -223,7 +223,7 @@ function Trail(trail) {
 
 Trail.tableName = 'trails';
 Trail.lookup = lookup;
-Trail.deleteByLocationId = deleteByLocationId;
+Trail.deleteLocationsDataById = deleteLocationsDataById;
 
 Trail.prototype = {
   save: function (location_id) {
@@ -268,7 +268,7 @@ function getWeather(request, response) {
     cacheHit: function (result) {
       let ageOfResults = (Date.now() - result.rows[0].created_at);
       if (ageOfResults > timeouts.weather) {
-        Weather.deleteByLocationId(Weather.tableName, request.query.data.id);
+        Weather.deleteLocationsDataById(Weather.tableName, request.query.data.id);
         this.cacheMiss();
       } else {
         response.send(result.rows);
@@ -301,7 +301,7 @@ function getYelp(request, response) {
     cacheHit: function (result) {
       let ageOfResults = (Date.now() - result.rows[0].created_at);
       if (ageOfResults > timeouts.yelp) {
-        Yelp.deleteByLocationId(Yelp.tableName, request.query.data.id);
+        Yelp.deleteLocationsDataById(Yelp.tableName, request.query.data.id);
         this.cacheMiss();
       } else {
         response.send(result.rows);
@@ -336,7 +336,7 @@ function getMovies(request, response) {
     cacheHit: function (result) {
       let ageOfResults = (Date.now() - result.rows[0].created_at);
       if (ageOfResults > timeouts.movies) {
-        Movie.deleteByLocationId(Movie.tableName, request.query.data.id);
+        Movie.deleteLocationsDataById(Movie.tableName, request.query.data.id);
         this.cacheMiss();
       } else {
         response.send(result.rows);
@@ -370,7 +370,7 @@ function getEvents(request, response) {
     cacheHit: function (result) {
       let ageOfResults = (Date.now() - result.rows[0].created_at);
       if (ageOfResults > timeouts.events) {
-        Event.deleteByLocationId(Event.tableName, request.query.data.id);
+        Event.deleteLocationsDataById(Event.tableName, request.query.data.id);
         this.cacheMiss();
       } else {
         response.send(result.rows);
@@ -404,7 +404,7 @@ function getTrails(request, response) {
     cacheHit: function (result) {
       let ageOfResults = (Date.now() - result.rows[0].created_at);
       if (ageOfResults > timeouts.trails) {
-        Trail.deleteByLocationId(Trail.tableName, request.query.data.id);
+        Trail.deleteLocationsDataById(Trail.tableName, request.query.data.id);
         this.cacheMiss();
       } else {
         response.send(result.rows);
